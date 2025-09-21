@@ -1,0 +1,68 @@
+<img src="images/Form1.png" alt="Form1" class="form1-bg">
+<img src="images/Form2.png" alt="Form2" class="form2-bg">
+    <div class="container mt-3 col-md-9">
+        <div class="card  w-100 p-4">
+            <h1> Wie war dein Tag?</h1>
+            <div class="card p-4" id="gefuehle">
+                <h2>Gefühle</h2>
+                <div class="d-flex gap-3 mt-3 ms-4 me-4" id="gefuehle-icons">
+                    <div class="emoji" *ngFor="let habit of gefuehleHabits">
+                        <button class="emoji-btn" [ngClass]="{'active': isActive(habit)}" (click)="toggleActive(habit)">
+                            <img [src]="'images/' + habit.image" [alt]="habit.name">
+                        </button>
+                        <h6 class="mt-2">{{ habit.name }}</h6>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="card p-4" id="schlaf">
+                <h2>Schlaf</h2>
+                <div class="d-flex mt-3 ms-4 me-4" id="schlaf-icons">
+                    <div class="emoji" *ngFor="let habit of schlafHabits">
+                        <button class="emoji-btn" [ngClass]="{'active': isActive(habit)}" (click)="toggleActive(habit)">
+                            <img [src]="'images/' + habit.image" [alt]="habit.name">
+                        </button>
+                        <h6 class="mt-2">{{ habit.name }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4" id="sozial">
+                <h2>Sozial</h2>
+                <div class="d-flex mt-3 ms-4 me-4" id="sozial-icons">
+                    <div class="emoji" *ngFor="let habit of sozialHabits">
+                        <button class="emoji-btn" [ngClass]="{'active': isActive(habit)}" (click)="toggleActive(habit)">
+                            <img [src]="'images/' + habit.image" [alt]="habit.name">
+                        </button>
+                        <h6 class="mt-2">{{ habit.name }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4" id="schule">
+                <h2>Schule</h2>
+                <div class="d-flex mt-3 ms-4 me-4" id="schule-icons">
+                    <div class="emoji" *ngFor="let habit of schuleHabits">
+                        <button class="emoji-btn" [ngClass]="{'active': isActive(habit)}" (click)="toggleActive(habit)">
+                            <img [src]="'images/' + habit.image" [alt]="habit.name">
+                        </button>
+                        <h6 class="mt-2">{{ habit.name }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4" id="hobbys">
+                <h2>Hobbys</h2>
+                <div class="d-flex mt-3 ms-4 me-4" id="hobbys-icons">
+                    <div class="emoji" *ngFor="let habit of hobbysHabits">
+                        <button class="emoji-btn" [ngClass]="{'active': isActive(habit)}" (click)="toggleActive(habit)">
+                            <img [src]="'images/' + habit.image" [alt]="habit.name">
+                        </button>
+                        <h6 class="mt-2">{{ habit.name }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+                <button class="btn btn-primary btn-lg px-5" (click)="saveHabits()">Weiter</button>
+            </div>
+        </div>
+   
+
+    

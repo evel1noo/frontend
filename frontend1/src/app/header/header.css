@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;          
+  background-color: rgba(244, 165, 223, 0.4);     
+  box-sizing: border-box;       
+ position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;  
+         
+}
+
+.logo {
+  margin: 0;
+  padding:1px;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-icon {
+  width: 25px;
+  height: 25px;
+}
+.logout-btn:hover .logout-icon {
+  filter: brightness(1.2) drop-shadow(rgba(244, 165, 223, 0.4));
+  transform: scale(1.1);
+  transition: all 0.2s;
+}

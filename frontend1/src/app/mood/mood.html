@@ -1,0 +1,53 @@
+<img src="images/Form1.png" alt="Form1" class="form1-bg">
+<img src="images/Form2.png" alt="Form2" class="form2-bg">
+    <div class="container col-md-9 mt-0 pt-0">
+        <h1 class="mb-1"> Willkommen {{ userName }}!</h1>
+        <div class="card w-100 p-3">
+            <p>Wie geht es dir?</p>
+            <div class="datum mt-6 d-flex justify-content-center gap-2">
+                <span>Heute,</span>
+                <span>{{ datum }}</span>
+                <span>{{ uhrzeit }}</span>
+            </div>
+            <div class="container mt-5">
+                <div class="row gap-4">
+                    <div class="col-6 col-sm-4 col-md-2 mb-4">
+                        <a routerLink="/habits"  (click)="selectMood({ name: 'Super', image: 'Super.png' })">
+                        <img src="/images/Super.png" class="img-fluid hover-zoom" alt="Super">
+                        </a>
+                        <p class="bild-beschriftung">Super</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-4">
+                        <a routerLink="/habits"   (click)="selectMood({name: 'Gut', image: 'Gut.png' })">
+                            <img src="/images/Gut.png" class="img-fluid hover-zoom" alt="Gut">
+                        </a>
+                        <p class="bild-beschriftung">Gut</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-4">
+                        <a routerLink="/habits"   (click)="selectMood({name: 'Okay', image: 'Okay.png' })">
+                            <img src="/images/Okay.png" class="img-fluid hover-zoom" alt="Okay">
+                        </a>
+                        <p class="bild-beschriftung">Okay</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-4">
+                        <a routerLink="/habits" (click)="selectMood({name: 'Schlecht', image: 'Schlecht.png'})">
+                            <img src="/images/Schlecht.png" class="img-fluid hover-zoom" alt="Schlecht">
+                        </a>
+                        <p class="bild-beschriftung">Schlecht</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-4">
+                        <a routerLink="/habits" (click)="selectMood({name: 'Furchtbar', image: 'Furchtbar.png'})">
+                            <img src="/images/Furchtbar.png" class="img-fluid hover-zoom" alt="Furchtbar">
+                        </a>
+                        <p class="bild-beschriftung">Furchtbar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+               <button 
+  class="goto-eintraege-btn"
+  (click)="goToEintraege()"
+>
+  Zu den Einträgen
+</button>
+    </div>

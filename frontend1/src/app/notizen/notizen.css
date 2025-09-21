@@ -1,0 +1,68 @@
+h1{ 
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 20px;
+   
+}
+.card { 
+    background-color: rgba(241, 237, 255, 0.6);
+    border: none;
+    border-radius: 30px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#textfeld {
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+#notiz {
+    border: none;
+    height: 340px;
+    resize: none;
+}
+
+.headline-row {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+.cat-img {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    margin-left:50px;
+}
+.form1-bg {
+    position: absolute;
+    top: 75px;       
+    left: -50px;
+   width: 52vw;    
+    height: auto;
+      z-index: -1;
+      filter: blur(9px);
+      
+       
+}
+.form2-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;       
+  width: 57vw;
+  height: auto;
+  z-index: -2;
+  filter: blur(9px);
+}
+.btn-primary {
+   padding-top: 10px;
+    background-color: #4422CC;
+    color: white;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    border-radius: 30px;
+    border: none;
+}
+.btn-primary:hover {
+  background-color: #4422CC;
+  transform: scale(1.05);
+  cursor: pointer;
+}

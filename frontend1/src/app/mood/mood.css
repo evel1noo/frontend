@@ -1,0 +1,90 @@
+.card {
+    min-height: 500px;
+    background: #F1EDFF;
+    border-radius: 30px;
+    border:none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 20px;
+    background: rgba(241, 237, 255, 0.5);
+}
+p {
+    font-family: Inter, sans serif;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+h1 {
+    font-family: Inter, sans serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size:50px;
+   margin-top: -10px;
+
+}
+.datum {
+    font-family: Inter, sans serif;
+    text-align: center;
+    font-size:25px;
+    font-weight: normal;
+   margin-top: -10px;
+}
+.hover-zoom{
+    transition: transform 0.3s ease;
+}
+.hover-zoom:hover {
+    transform: scale(1.1);
+}
+a {
+    padding: 30px;
+}
+.bild-beschriftung{
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 35px;
+    margin-left: 55px;
+}
+.goto-eintraege-btn {
+  position: fixed;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 180px;
+  height: 50px;
+  border-radius: 25px;
+  background: #4422CC;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form1-bg {
+    position: absolute;
+    top: 75px;       
+    left: -50px;
+   width: 52vw;    
+    height: auto;
+      z-index: -1;
+      filter: blur(15px);
+      
+}
+.form2-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;       
+  width: 57vw;
+  height: auto;
+  z-index: -2;
+  filter: blur(15px);
+}
+.goto-eintraege-btn:hover {
+     background-color: #6c47ff;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}

@@ -1,0 +1,224 @@
+.card { 
+    background-color: rgba(241, 237, 255, 0.6);
+    border: none;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    margin-bottom: 30px;
+    padding: -10px;
+}
+.custom{
+    background-color: white;
+}
+.habits-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.habit-card{
+    background-color:#F1EDFF;
+    border-radius: 12px;
+    padding: 6px 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.8);
+
+}
+.notiz-card{
+    background-color:#F1EDFF;
+    border-radius: 16px;
+  padding: 12px 18px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;       
+  
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  font-size: 1rem;
+}
+.datum-rechts{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+}
+.btn-danger {
+    background-color: #4422CC;
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 10%;
+}
+.btn-danger:active{
+    background-color: #4422CC; 
+    color: white;
+}
+.btn-danger:hover{
+    background-color: #6c47ff; 
+    color: white;
+    cursor: pointer;
+}
+.dialoge-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+.confirm-dialog-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.confirm-dialog {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.endgueltig-btn {
+    background-color:#4422CC;
+    width: 25%;
+    color: white;
+    border-radius: 15px;
+}
+.abbrechen-btn {
+    background-color:#F4A5DF;
+    border: none;
+    border-radius: 15px;
+    width: 25%;
+    color: white;
+}
+.mood-name {
+    font-weight: bold;
+    font-size: 35px;
+    font-family: Inter, sans serif
+}
+.eintraege-headline{
+    font-weight: bold;
+    font-family: Inter, sans serif;
+}
+.bearbeiten-btn {
+    background-color: #F4A5DF;
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: white;
+}
+.bearbeiten-btn:active{
+    background-color:#F4A5DF;
+    color: white;
+}
+.bearbeiten-btn:hover{
+    background-color:#ff7fe1;
+    color: white;
+    cursor: pointer;
+}
+.edit-dialog-backdrop {
+    position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;    
+  background: rgba(0,0,0,0.3);
+}
+.edit-dialog {
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 2rem;
+  max-width: 90vw;
+  width: 800px;
+  border: none;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.abbrechen-btn1 {
+    background-color: #F4A5DF;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 25%;
+    margin-top: 10px;
+}
+.speichern-btn {
+    background-color: #4422CC;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 25%;
+    margin-top: 10px;
+}
+.habit-card.selected {
+    border: none;
+    background-color: #e0d7ff;
+}
+.mood-card.selected {
+  border: none;
+  background-color: #e0d7ff;
+  border-radius: 15px;
+}
+.plus-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #4422CC;
+    color: white;
+    font-size: 2.5rem;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  
+    
+}
+.plus-btn:hover {
+    background-color: #6c47ff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.plus-symbol {
+    line-height: 1;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.habit-card.selected {
+    border: none;
+    background-color: #e0d7ff;
+}
+.mood-card.selected {
+  border: none;
+  background-color: #e0d7ff;
+  border-radius: 15px;
+}
+.form1-bg {
+    position: fixed;
+    top: 75px;       
+    left: -50px;
+   width: 52vw;    
+    height: auto;
+      z-index: -1;
+      filter: blur(9px);
+      
+       
+}
+.form2-bg {
+  position: fixed;
+  right: 0;
+  bottom: 0;       
+  width: 57vw;
+  height: auto;
+  z-index: -2;
+  filter: blur(9px);
+}

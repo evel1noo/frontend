@@ -1,0 +1,95 @@
+<img src="images/Form1.png" alt="Form1" class="form1-bg">
+<img src="images/Form2.png" alt="Form2" class="form2-bg">
+<div class="container mt-4 col-md-9">
+    <div class="headline-row">
+            <h1 class="eintraege-headline">Alle Einträge</h1>
+        </div>
+        
+    <div class="card w-100 p-3" >
+<div *ngFor="let entry of entries" class="card mb-3 p-3 custom">
+      <div class="datum-rechts">
+        <strong>{{ entry.datum | date:'shortDate'}}</strong>
+      </div>
+      <br>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img [src]="'images/' + entry.mood.image" [alt]="entry.mood.name" width="60">
+        <span class="mood-name">{{ entry.mood.name }}</span>
+      </div>
+      <strong></strong>
+      <div class="habits-list">
+        <div *ngFor="let habit of entry.habits" class="habit-card">
+      {{ habit.name  }}
+      <img [src]="'images/' + habit.image" [alt]="habit.name" width="20">
+        </div> 
+        </div>
+      <div class="notiz-card" *ngIf="entry.notizen && entry.notizen.trim() !== ''">
+        {{ entry.notizen }}
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap:10px;">
+        <button class="btn bearbeiten-btn" (click)="openEditDialog(entry)">Bearbeiten</button>
+    <button class="btn btn-danger" (click)="openConfirmDialog(entry._id)">
+      Löschen
+    </button>
+  </div>
+</div>
+    </div>
+    <button class="plus-btn" (click)="goToMood()" aria-label="Neuen Eintrag erstellen">
+  <span class="plus-symbol">+</span>
+</button>
+</div>
+
+<div *ngIf="showEditDialog" class="edit-dialog-backdrop">
+  <div class="edit-dialog card">
+    <h2>Eintrag bearbeiten:</h2>
+    <div class="card-body">
+       <div class="form-group">
+  <label><strong>Mood:</strong></label>
+  <div class="moods-list" style="display: flex; gap: 20px;">
+    <div
+      *ngFor="let mood of moods"
+      class="mood-card"
+      [class.selected]="selectedEntry.mood?.name === mood.name"
+      (click)="selectedEntry.mood = mood"
+      style="cursor: pointer; text-align: center;"
+    >
+      <img [src]="'images/' + mood.image" [alt]="mood.name" width="60">
+      <div>{{ mood.name }}</div>
+    </div>
+  </div>
+</div>
+     <div class="form-group">
+  <label><strong> Habits:</strong></label>
+  <div class="habits-list">
+    <div
+      *ngFor="let habit of allHabits"
+      class="habit-card"
+      [class.selected]="hasHabit(habit)"
+      (click)="toggleHabit(habit)"
+      style="cursor: pointer;"
+    >
+      {{ habit.name }}
+      <img [src]="'images/' + habit.image" [alt]="habit.name" width="20">
+    </div>
+  </div>
+</div>
+    <div class="form-group">
+      <label><strong>Notizen:</strong></label>
+      <textarea id="notizen" class="form-control" rows="5" [(ngModel)]="selectedEntry.notizen" name="notizen"></textarea>
+    </div>
+    <div class="dialoge-buttons">
+      <button class="btn abbrechen-btn1" (click)="closeEditDialog()">Abbrechen</button>
+      <button class="btn speichern-btn" (click)="saveEdits()">Speichern</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="showConfirmDialog" class="confirm-dialog-backdrop">
+  <div class="confirm-dialog">
+    <p>Bist du dir sicher, dass du diesen Eintrag löschen möchtest?</p>
+    <div class="dialoge-buttons">
+    <button class="btn abbrechen-btn" (click)="closeConfirmDialog()">Abbrechen</button>
+    <button class="btn endgueltig-btn" (click)="confirmDelete()">Löschen</button>
+  </div>
+</div>
+</div>

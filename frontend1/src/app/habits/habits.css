@@ -1,0 +1,143 @@
+.card {
+    background-color: rgba(241, 237, 255, 0.5);
+    border: none;
+    min-height: auto;
+    border-radius: 30px;
+    margin-bottom:20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-left: 20px;
+}
+#gefuehle {
+    margin-top: 20px;
+    background-color: #FDFDFD;
+    box-shadow: 0 2px 2px rgba(18, 14, 14, 0.3);
+    min-height: 250px;
+}
+#gefuehle-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#schlaf-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8rem;
+}
+#sozial-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6rem;
+}
+#schule-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6rem;
+}
+#hobbys-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+#schlaf {
+    margin-top: 20px;
+    background-color: #FDFDFD;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.300);
+    min-height: 250px;
+}
+#sozial {
+    margin-top: 20px;
+    background-color: #FDFDFD;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.300);
+    min-height: 250px;
+}
+#schule {
+    margin-top: 20px;
+    background-color: #FDFDFD;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.300);
+    min-height: 250px;
+}
+#hobbys {
+    margin-top: 20px;
+    background-color: #FDFDFD;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.300);
+    min-height: 250px;
+}
+.btn-primary {
+    padding-top: 10px;
+    background-color: #4422CC;
+    color: white;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    border-radius: 30px;
+    border: none;
+}
+.btn-primary:hover {
+  background-color: #4422CC;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.emoji{
+    text-align: center;
+}
+.emoji img {
+    width: 65px;
+    height: 65px;
+}
+.emoji-btn {
+    background: none;
+    border-radius: 50%;
+    border:none;
+    padding: 12px;
+    cursor: pointer;
+   text-align:center;
+}
+.emoji-btn.active{
+    background-color: #F1EDFF;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+}
+.emoji-btn:hover{
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+#gefuehle-icons,
+#schlaf-icons,
+#sozial-icons,
+#schule-icons,
+#hobbys-icons {
+    flex-wrap: wrap;
+}
+* {
+    box-sizing: border-box;
+}
+.form1-bg {
+    position: fixed;
+    top: 75px;       
+    left: -50px;
+   width: 52vw;    
+    height: auto;
+      z-index: -1;
+      filter: blur(15px);
+      
+}
+.form2-bg {
+  position: fixed;
+  right: 0;
+  bottom: 0;       
+  width: 57vw;
+  height: auto;
+  z-index: -2;
+  filter: blur(15px);
+}
