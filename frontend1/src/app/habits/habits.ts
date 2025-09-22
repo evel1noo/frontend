@@ -51,7 +51,7 @@ hobbysHabits = [
   selectedHabits: { name: string, image: string }[] = [];
 
   constructor(private router: Router) {}
-
+//Auswählen von Habits
   toggleActive(habit: { name: string, image: string }) {
    
     const index = this.selectedHabits.findIndex(h => h.name === habit.name);
@@ -61,11 +61,11 @@ hobbysHabits = [
       this.selectedHabits.splice(index, 1);
     }
   }
-
+//Vorhebung von ausgewählten Habits
 isActive(habit: { name: string, image: string }): boolean {
   return this.selectedHabits.some(h => h.name === habit.name);
 }
-
+//Speichern von Habits, Navigation nächste Seite
   saveHabits() {
     localStorage.setItem('habits', JSON.stringify(this.selectedHabits));
     this.router.navigate(['/notizen']);

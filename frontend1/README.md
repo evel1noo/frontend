@@ -66,4 +66,4 @@ git clone https://github.com/malourichter/Webtech-Projekt.git
 **Nutzung von KI**
 - benutzte KI-Tools: ChatGPT, GitHub Copilot  
 
-Die KI-Tools wurden ausschließlich bei Fragen bzw. Erläuterungen zum Code, sowie zur Code-Optimierung genutzt.
+Die KI-Tools wurden bei Fragen bzw. Erläuterungen zum Code, sowie zur Code-Optimierung genutzt.

@@ -19,7 +19,7 @@ export class Login {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-
+//Authentifizierung Benutzer
   login() {
    this.http.post<any>('http://localhost:3000/auth/login', {
       email: this.email,

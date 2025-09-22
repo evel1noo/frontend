@@ -18,7 +18,7 @@ name: string = '';
   error: string = '';
 
 constructor(private http: HttpClient, private router: Router) {}
-
+//Benutzerregistrierung mit Validierung
    registerUser() {
   
     if (!this.name || !this.email || !this.password) {

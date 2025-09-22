@@ -52,7 +52,8 @@ export class Eintraege implements OnInit {
     { name: 'Wütend', image: 'Wütend.png' }
   ];
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef, private router: Router) {}
-ngOnInit() {
+//lädt alle Einträge des eingeloggten Users
+  ngOnInit() {
   this.http.get<any[]>('http://localhost:3000/entry/me', {
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -63,7 +64,7 @@ ngOnInit() {
       this.cdr.detectChanges(); 
   });
 }
-
+//Löschen von Einträgen
   deleteEntry(entryId: string) {
   this.http.delete(`http://localhost:3000/entry/${entryId}`, {
     headers: {
@@ -78,16 +79,17 @@ ngOnInit() {
 showConfirmDialog = false;
 entryToDelete: string | null = null;
 
+//Öffnen von Bestätigungsdialog
 openConfirmDialog(entryId: string) {
   this.entryToDelete = entryId;
   this.showConfirmDialog = true;
 }
-
+// Schließt Bestätigungsdialog, ohne Löschung
 closeConfirmDialog() {
   this.showConfirmDialog = false;
   this.entryToDelete = null;
 }
-
+//Bestätigung Löschen
 confirmDelete() {
   if (this.entryToDelete) {
     this.deleteEntry(this.entryToDelete); 
@@ -99,16 +101,18 @@ selectedEntry: any = null;
 showEditDialog = false;
 entryToEdit: any = null;
 
-
+//Öffnen des Editierdialogs
 openEditDialog(entry: any) {
   this.selectedEntry = { ...entry };
   this.showEditDialog = true;
 
 }
+//Schließen des Editierdialogs
 closeEditDialog() {
   this.showEditDialog = false;
   this.selectedEntry = null;
 }
+//Speicherung von veränderterten Einträgen
 saveEdits() {
   if (this.selectedEntry && this.selectedEntry._id) {
     this.http.patch(
@@ -131,6 +135,7 @@ saveEdits() {
     });
   }
 }
+//An-/Abwählen von Habits bei Bearbeitung
   toggleHabit(habit: any) {
     const idx = this.selectedEntry.habits.findIndex((h: any) => h.name === habit.name);
     if (idx > -1) {
@@ -139,6 +144,7 @@ saveEdits() {
       this.selectedEntry.habits.push(habit);
     }
   }
+  //Darstellung ausgewählter Habits
   hasHabit(habit: { name: string; image: string }): boolean {
   return this.selectedEntry?.habits?.some((h: any) => h.name === habit.name) ?? false;
 }
