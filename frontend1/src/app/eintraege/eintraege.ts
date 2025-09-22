@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 
 
@@ -51,30 +51,41 @@ export class Eintraege implements OnInit {
     { name: 'Traurig', image: 'Traurig.png' },
     { name: 'Wütend', image: 'Wütend.png' }
   ];
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef, private router: Router) {}
+  constructor(private apiService: ApiService, private cdr: ChangeDetectorRef, private router: Router) {}
 //lädt alle Einträge des eingeloggten Users
   ngOnInit() {
-  this.http.get<any[]>('http://localhost:3000/entry/me', {
-    headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token')
-    }
-  }).subscribe(data => {
-    this.entries = data
-      .sort((a, b) => new Date(b.datum).getTime() - new Date(a.datum).getTime());
-      this.cdr.detectChanges(); 
-  });
-}
+    this.apiService.getMyEntries().subscribe({
+      next: (data: any) => {
+        this.entries = data
+          .sort((a: any, b: any) => new Date(b.datum).getTime() - new Date(a.datum).getTime());
+        this.cdr.detectChanges(); 
+      },
+      error: (err) => {
+        console.error('Fehler beim Laden der Einträge:', err);
+        // Bei Authentifizierungsfehlern zur Login-Seite weiterleiten
+        if (err.status === 401 || err.status === 403) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        }
+      }
+    });
+  }
 //Löschen von Einträgen
   deleteEntry(entryId: string) {
-  this.http.delete(`http://localhost:3000/entry/${entryId}`, {
-    headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token')
-    }
-  }).subscribe(() => {
-    this.entries = this.entries.filter(entry => entry._id !== entryId);
-    this.cdr.detectChanges(); 
-  });
-}
+    this.apiService.deleteEntry(entryId).subscribe({
+      next: () => {
+        this.entries = this.entries.filter(entry => entry._id !== entryId);
+        this.cdr.detectChanges(); 
+      },
+      error: (err) => {
+        console.error('Fehler beim Löschen:', err);
+        if (err.status === 401 || err.status === 403) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        }
+      }
+    });
+  }
 
 showConfirmDialog = false;
 entryToDelete: string | null = null;
@@ -115,23 +126,24 @@ closeEditDialog() {
 //Speicherung von veränderterten Einträgen
 saveEdits() {
   if (this.selectedEntry && this.selectedEntry._id) {
-    this.http.patch(
-      `http://localhost:3000/entry/${this.selectedEntry._id}`,
-      this.selectedEntry,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
+    this.apiService.updateEntry(this.selectedEntry._id, this.selectedEntry).subscribe({
+      next: (response: any) => {
+        // Das Backend gibt { message, entry } zurück
+        const updatedEntry = response.entry;
+        const idx = this.entries.findIndex(e => e._id === updatedEntry._id);
+        if (idx > -1) {
+          this.entries[idx] = updatedEntry;
+        }
+        this.closeEditDialog();
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Fehler beim Bearbeiten:', err);
+        if (err.status === 401 || err.status === 403) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
         }
       }
-    ).subscribe((response: any) => {
-      // Das Backend gibt { message, entry } zurück
-      const updatedEntry = response.entry;
-      const idx = this.entries.findIndex(e => e._id === updatedEntry._id);
-      if (idx > -1) {
-        this.entries[idx] = updatedEntry;
-      }
-      this.closeEditDialog();
-      this.cdr.detectChanges();
     });
   }
 }

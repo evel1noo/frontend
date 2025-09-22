@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-notizen',
@@ -13,8 +13,8 @@ export class Notizen {
   notiz: string = '';
   error: string = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
-//Zusammenfügen aller Daten für Eintrag, permanente Speicherung in DB
+  constructor(private router: Router, private apiService: ApiService) {}
+//Zusammenfügen aller Daten für Eintrag, Speicherung in DB
   saveEntry() {
   const userId = localStorage.getItem('userId') || '';
   const mood = { name: localStorage.getItem('mood') || '', image: localStorage.getItem('moodImage') || '' };
@@ -22,21 +22,16 @@ export class Notizen {
   const datum = new Date();
   const uhrzeit = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
 
-  const token = localStorage.getItem('token');
-  const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', `Bearer ${token}`);
-
   localStorage.setItem('notizen', this.notiz);
 
-  this.http.post<any>('http://localhost:3000/entry', {
+  this.apiService.createEntry({
     userId,
     mood,
     habits,
     notizen: this.notiz,
     datum,
     uhrzeit
-  }, { headers }).subscribe({
+  }).subscribe({
     next: () => {
       localStorage.removeItem('mood');
       localStorage.removeItem('moodImage');
@@ -45,9 +40,12 @@ export class Notizen {
       
       this.router.navigate(['/eintraege']);
     },
-    error: (err) => {
+    error: (err: any) => {
       this.error = err.error?.message || 'Speichern fehlgeschlagen!';
-     
+      if (err.status === 401 || err.status === 403) {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
     }
   });
 }}

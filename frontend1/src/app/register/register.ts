@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ name: string = '';
   password: string = '';
   error: string = '';
 
-constructor(private http: HttpClient, private router: Router) {}
+constructor(private apiService: ApiService, private router: Router) {}
 //Benutzerregistrierung mit Validierung
    registerUser() {
   
@@ -35,17 +35,17 @@ constructor(private http: HttpClient, private router: Router) {}
     return;
   }
 
-    this.http.post<any>('http://localhost:3000/register', {
+    this.apiService.register({
       name: this.name,
       email: this.email,
       password: this.password
     }).subscribe({
-      next: data => {
+      next: (data: any) => {
         this.error = '';
         localStorage.setItem('name', this.name);
         this.router.navigate(['/login']);
       },
-      error: err => {
+      error: (err: any) => {
         this.error = err.error?.message || 'Registrierung fehlgeschlagen!';
       }
     });

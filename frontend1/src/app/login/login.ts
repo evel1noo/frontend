@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +17,15 @@ export class Login {
   password: string = '';
   error: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
 //Authentifizierung Benutzer
   login() {
-   this.http.post<any>('http://localhost:3000/auth/login', {
+   this.apiService.login({
       email: this.email,
       password: this.password
     }).subscribe({
-      next: data => {
+      next: (data: any) => {
         if (data.token) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('userId', data.user.id);
